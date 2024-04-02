@@ -21,8 +21,8 @@ const Signup = () => {
         <Row className="mt-4">
           <Col sm={{ size: 6, offset: 3 }}>
             <Card color="dark" inverse>
-              <CardHeader>
-                <h3>Fill Info to register</h3>
+              <CardHeader className="text-center">
+                <h3>Sign Up</h3>
               </CardHeader>
               <CardBody>
                 {/* creating form */}
@@ -65,8 +65,8 @@ const Signup = () => {
                   </FormGroup>
 
                   <Container className="text-center">
-                    <Button color="primary">Register</Button>
-                    <Button color="secondary" type="reset" className="ms-2">
+                    <Button color="primary" outline>Register</Button>
+                    <Button color="secondary" outline type="reset" className="ms-2">
                       Reset
                     </Button>
                   </Container>
