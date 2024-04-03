@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { signUp } from "../Services/user-service";
 import Base from "../components/Base";
+import { toast } from "react-toastify";
 import {
   Button,
   Card,
@@ -65,6 +66,13 @@ const Signup = () => {
       .then((response) => {
         console.log(response);
         console.log("success log");
+        toast.success("User Registered Successfully !!");
+        setData({
+          name: "",
+          email: "",
+          password: "",
+          about: ""
+        })
       })
       .catch((error) => {
         console.log(error);
