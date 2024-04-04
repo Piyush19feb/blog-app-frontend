@@ -10,6 +10,7 @@ import {
   Col,
   Container,
   Form,
+  FormFeedback,
   FormGroup,
   Input,
   Label,
@@ -56,27 +57,36 @@ const Signup = () => {
   const submitForm = (event) => {
     // preventing default behavior of form
     event.preventDefault();
-    console.log(data);
-    // logic to handle validation of data
-    // .
-    // .
+    // if (error.isError) {
+    //   toast.error("Input Data is Invalid !!");
+    //   setError({...error, isError:false})
+    //   return;
+    // }
 
+    console.log(data);
     // call server api for sending data
     signUp(data)
       .then((response) => {
         console.log(response);
         console.log("success log");
-        toast.success("User Registered Successfully !!");
+        toast.success(
+          "User Registered Successfully with User Id: " + response.id
+        );
         setData({
           name: "",
           email: "",
           password: "",
-          about: ""
-        })
+          about: "",
+        });
       })
       .catch((error) => {
         console.log(error);
         console.log("Error log");
+        // handle errors in proper way
+        setError({
+          errors: error,
+          isError: true,
+        });
       });
   };
 
@@ -92,7 +102,7 @@ const Signup = () => {
               <CardBody>
                 {/* creating form */}
                 <Form onSubmit={submitForm}>
-                  {/* name field */}
+                  {/* Name field */}
                   <FormGroup>
                     <Label for="name"> Enter Name </Label>
                     <Input
@@ -101,7 +111,13 @@ const Signup = () => {
                       id="name"
                       onChange={(e) => handleChange(e, "name")}
                       value={data.name}
+                      invalid={
+                        error.errors?.response?.data?.name ? true : false
+                      }
                     />
+                    <FormFeedback>
+                      {error.errors?.response?.data?.name}
+                    </FormFeedback>
                   </FormGroup>
 
                   {/* email field */}
@@ -113,7 +129,13 @@ const Signup = () => {
                       id="email"
                       onChange={(e) => handleChange(e, "email")}
                       value={data.email}
+                      invalid={
+                        error.errors?.response?.data?.email ? true : false
+                      }
                     />
+                    <FormFeedback>
+                      {error.errors?.response?.data?.email}
+                    </FormFeedback>
                   </FormGroup>
 
                   {/* password field */}
@@ -125,7 +147,13 @@ const Signup = () => {
                       id="password"
                       onChange={(e) => handleChange(e, "password")}
                       value={data.password}
+                      invalid={
+                        error.errors?.response?.data?.password ? true : false
+                      }
                     />
+                    <FormFeedback>
+                      {error.errors?.response?.data?.password}
+                    </FormFeedback>
                   </FormGroup>
 
                   {/* about field */}
@@ -138,7 +166,13 @@ const Signup = () => {
                       onChange={(e) => handleChange(e, "about")}
                       value={data.about}
                       style={{ height: "200px" }}
+                      invalid={
+                        error.errors?.response?.data?.about ? true : false
+                      }
                     />
+                    <FormFeedback>
+                      {error.errors?.response?.data?.about}
+                    </FormFeedback>
                   </FormGroup>
 
                   <Container className="text-center">
