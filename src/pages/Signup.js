@@ -117,6 +117,10 @@ const Signup = () => {
                     />
                     <FormFeedback>
                       {error.errors?.response?.data?.name}
+                      {/* que mark syntax is called as nullsafe it means ki if we
+                      had null in errrors,  or response or data then we cant
+                      call name on null it will give error, hence to resolve
+                      such error */ }
                     </FormFeedback>
                   </FormGroup>
 
