@@ -16,8 +16,12 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { loginUser } from "../Services/user-service";
 import { doLogin } from "../auth";
+import {useNavigate} from "react-router-dom";
 
 const Login = () => {
+
+  const navigate = useNavigate();
+
   const [loginDetail, setLoginDetail] = useState({
     username: "",
     password: "",
@@ -56,6 +60,7 @@ const Login = () => {
         doLogin(data, () => {
           console.log("login details is saved in localStorage");
           // redirect to user dashboard page
+          navigate("/user/dashboard");
         });
         toast.success("User Login Successfully");
       })

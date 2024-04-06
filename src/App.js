@@ -20,7 +20,7 @@ import ProfileInfo from "./pages/user-routes/ProfileInfo";
 function App() {
   return (
     <BrowserRouter>
-      <ToastContainer />
+      <ToastContainer position="bottom-center" closeOnClick theme="dark" />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
@@ -30,7 +30,7 @@ function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/user" element={<PrivateRoutes />}>
           <Route path="dashboard" element={<UserDashboard />} />
-          <Route path="profile" element={<ProfileInfo/>} />
+          <Route path="profile" element={<ProfileInfo />} />
         </Route>
       </Routes>
     </BrowserRouter>
