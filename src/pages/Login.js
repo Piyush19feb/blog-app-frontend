@@ -117,7 +117,7 @@ const Login = () => {
                     <Button
                       type="reset"
                       className="ms-2"
-                      color="secondary"
+                      color="danger"
                       outline
                       onClick={resetData}
                     >

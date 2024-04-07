@@ -70,7 +70,8 @@ const Signup = () => {
         console.log(response);
         console.log("success log");
         toast.success(
-          "User Registered Successfully with User Id: " + response.id
+          // "User Registered Successfully with User Id: " + response.id
+          "User Registered Successfully"
         );
         setData({
           name: "",
@@ -120,7 +121,7 @@ const Signup = () => {
                       {/* que mark syntax is called as nullsafe it means ki if we
                       had null in errrors,  or response or data then we cant
                       call name on null it will give error, hence to resolve
-                      such error */ }
+                      such error */}
                     </FormFeedback>
                   </FormGroup>
 
@@ -184,7 +185,7 @@ const Signup = () => {
                       Register
                     </Button>
                     <Button
-                      color="secondary"
+                      color="danger"
                       outline
                       type="reset"
                       className="ms-2"
